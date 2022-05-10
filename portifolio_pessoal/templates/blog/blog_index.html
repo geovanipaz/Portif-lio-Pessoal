@@ -4,12 +4,14 @@
 {% block title %}Home{% endblock title %}
 
 {% block body_block %}
+
   {% for post in posts %}
     <h2>{{ post.titulo }}</h2>
-    <h6><i>{{ blog.publish_date }}</i></h6>  
+    <h6><i>{{ post.criado }}</i></h6>  
 
     <div class="row">
       <div class="col-sm-4">
+        
         <img src="/media/{{ post.imagem }}" alt="{{ post.titulo }}"
         title="{{ post.titulo }}" width="100%">
       </div>
