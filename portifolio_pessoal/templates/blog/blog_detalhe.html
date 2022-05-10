@@ -1,0 +1,52 @@
+{% extends "base2.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}BLOG DETAILS{% endblock title %}
+
+{% block body_block %}
+  <div class="row">
+    <div class="col-sm-6">
+      <h2>{{ post.titulo }}</h2>
+      <h4>Posted by: {{ post.autor }}</h4>
+      <i><h6>Published on: {{ post.criado }}</h6></i>
+      <i><h6>Updated on: {{ post.modificado }}</h6></i>
+      <h6> 
+        {{ post.posts.count }} Comments</h6>
+
+    </div>
+
+    <div class="col-sm-6">
+      <img src="/media/{{ post.imagem }}" width="100%">
+    </div>
+    {{ post.corpo | linebreaks }}
+  </div>
+
+  <hr>
+  
+  
+
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h5>Comments:</h5>
+      {% for comment in post.posts.all %}
+        <p><a href="">{{ comment.usuario }}</a></p>
+        {{ comment.corpo }} <br>
+        <h6><i>{{ comment.criado }}</i></h6>
+      {% endfor %}
+    </div>
+
+    <div class="col-sm-6">
+        <!--
+            <form method="POST">
+        {{ comment_form | crispy }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary btn-sm">Comment</button>
+      </form>
+        -->
+      
+    </div>
+  </div>
+  <br><br><br>
+
+{% endblock body_block %}
